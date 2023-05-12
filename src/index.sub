@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>${data.title}</h1>
+
+<ul>
+	$(data.features:item){<li>${item}</li>}
+</ul>
+</body>
+</html> 
