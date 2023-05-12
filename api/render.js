@@ -1,3 +1,5 @@
+/* Example Vercel edge function */
+
 import template from "./../public/template/index.mjs";
 
 const data = {
