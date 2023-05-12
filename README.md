@@ -18,35 +18,35 @@ or prerendered (SSG).
 
 The syntax is exactly the same as li-template (although I might add to it in the future):
 
-### Exists (if something is not null)
+### Exists (not null)
 
 **Short-hand**
 
-`$(this.something?){<b>${this.something}</b>}`
+`$(data.something?){<b>${data.something}</b>}`
 
 **Transpiles into**
 
-`` ${this.something ? `<b>${this.something}</b>` : ''} ``
+`` ${data.something ? `<b>${data.something}</b>` : ''} ``
 
-### Non-exists or empty (if something is null or something.length === 0)
+### Does not exist or empty
 
 **Short-hand**
 
-`$(!this.something?){<b>Empty</b>}`
+`$(!data.something?){<b>Empty</b>}`
 
 **Transpiles into**
 
-`` ${this.something == null || this.something.length === 0 ? `<b>Empty</b>` : ''} ``
+`` ${data.something == null || data.something.length === 0 ? `<b>Empty</b>` : ''} ``
 
 ### Loops
 
 **Short-hand**
 
-`$(this.names:name){<b>I'm ${name}</b>}`
+`$(data.names:name){<b>I'm ${name}</b>}`
 
 **Transpiles into**
 
-`` ${this.names.map(x => `<b>I'm ${x.name}</b>`).join('')} ``
+`` ${data.names.map(x => `<b>I'm ${x.name}</b>`).join('')} ``
 
 ## Basic syntax
 
@@ -56,19 +56,9 @@ Inside `${}` you can use whatever from Javascript you would like to. Functions, 
 
 This one is just like plain ES6 template literals.
 
-`${this.something}`
+`${data.something}`
 
-It will be replaced at render time with _this.something_'s value.
-
-### Escaping content
-
-li-template by default **doesn't escape anything**. So you are 100% vulnerable to XSS attacks or something. This is intended by design, as we want to achieve **maximum performance**. But this doesn't mean that we're going to leave you on your own. We offer a method that is accessible from within **ALL** .lit template files **that will escape anything**. Just call `${safe(this.somethingDangerous)}` and you'll be fine. It's easy!
-
-### Escaping li-template
-
-Sometimes li-template may conflict with third-party libraries like inline jQuery. No problem! Just use the backslash before the dollar sign and li-template is going to ignore that tag.
-
-Like this: `\$('.my-jquery-selector')`
+It will be replaced at render time with _data.something_'s value.
 
 ## How it works
 
