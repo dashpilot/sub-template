@@ -1,7 +1,8 @@
 import template from "./../public/template/index.mjs";
+import * as fs from "fs";
 
-let data = {
-  title: "li-template demo",
+var data = {
+  title: "sub-template demo",
   features: [
     "Template files are compiled into NodeJS modules and in-memory cached",
     "Partials and compiled partials",
@@ -13,6 +14,10 @@ let data = {
   ],
 };
 
+data.mode = "prerendered";
+
 var result = template(data);
 
-console.log(result);
+// console.log(result);
+
+fs.writeFileSync("./public/index.html", result, "utf8");

@@ -2,7 +2,7 @@
 
 import template from "./../public/template/index.mjs";
 
-const data = {
+var data = {
   title: "sub-template demo",
   features: [
     "Template files are compiled into NodeJS modules and in-memory cached",
@@ -14,6 +14,8 @@ const data = {
     "Ultra small size",
   ],
 };
+
+data.mode = "rendered on the edge";
 
 export const config = {
   runtime: "edge",
