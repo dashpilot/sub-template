@@ -6,8 +6,12 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node actions/precompile.js && node actions/compile.js"
+    "build": "node actions/precompile.js && node actions/compile.js",
+    "watch": "vercel dev & chokidar \"src/*.sub\" -c \"npm run build\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chokidar-cli": "^3.0.0"
+  }
 }
